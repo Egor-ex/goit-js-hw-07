@@ -24,15 +24,14 @@ const images = [
     },
 ];
 
+const ulRef = document.querySelector('#gallery');
 
+const result = images.reduce((acc, el) => {
+    return (acc += `<li><img  src = "${el.url}" alt = "${el.alt}"  width = "150" height = "100";></li>`);
+}, "");
 
-const ulEl = document.querySelector('#gallery');
+ulRef.insertAdjacentHTML('beforeend', result);
+console.log(ulRef)
 
-images.forEach(el => {
-    ulEl.insertAdjacentHTML(
-        'afterbegin',
-        `<img src = "${el.url}" alt = "${el.alt}"  width = "150" height = "100" />`,
-    );
-});
+ulRef.setAttribute("style", "list-style-type:none; display: flex;");
 
-ulEl.setAttribute("style", "list-style-type:none; display: flex;");
